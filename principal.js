@@ -1,11 +1,91 @@
 var titulo = document.querySelector(".titulo");
 titulo.textContent = "Aparecida Nutricionista";
 
-var paciente = document.querySelector("#primeiro-paciente");
-var tdPeso = paciente.querySelector(".info-peso");
+var trPacientes = document.querySelectorAll(".paciente");
 
-var peso = tdPeso.textContent;
+for (var i = 0; i < trPacientes.length; i++) {
 
-console.log(paciente); // tr 
-console.log(tdPeso); // td que tem o peso 
-console.log(peso); // obter 100 
+    var trPaciente = trPacientes[i];
+
+    var tdPeso = trPaciente.querySelector(".info-peso");
+    var tdAltura = trPaciente.querySelector(".info-altura");
+    var tdImc = trPaciente.querySelector(".info-imc");
+
+    var peso = tdPeso.textContent;
+    var altura = tdAltura.textContent;
+
+    var pesoEhValido = true;
+    var alturaEhValida = true;
+
+    if (peso <= 0 || peso >= 1000) {
+        pesoEhValido = false;
+        trPaciente.classList.add("paciente-invalido");
+        tdPeso.classList.add("peso-invalido");
+    }
+
+    if (altura <= 0 || altura >= 3.00) {
+        alturaEhValida = false
+        trPaciente.classList.add("paciente-invalido");
+        tdAltura.classList.add("altura-invalida");
+  
+    }
+
+    if (pesoEhValido && alturaEhValida) {
+        var imc = (peso / (altura * altura));
+        tdImc.textContent = imc.toFixed(2);
+    } else {
+        tdImc.textContent = "Altura e/ou peso inválidos!"
+    }
+}
+titulo.addEventListener("click", mostraMensagem)
+function mostraMensagem() {
+    console.log("Olá eu fui clicado!");
+}
+
+
+var botaoAdicionar = document.querySelector("#adicionar-paciente");
+botaoAdicionar.addEventListener("click"), function (event){
+event.preventDefault();
+//console.log("oi,clique no botao.");
+
+var form = document, querySelector("#form-adiciona");
+
+var nome = form.nome.value;
+var peso = form.peso.value;
+var altura = form.altura,value;
+var gordura = form.gordura.value;
+
+var pacienteTr=document.createElement("tr");
+
+var nometd = document.createElement("td");
+var pesotd = document.createElement("td");
+var altura = document.createElement("td");
+var gordura = document.createElement("td");
+var imc = document.createElement("td");
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
